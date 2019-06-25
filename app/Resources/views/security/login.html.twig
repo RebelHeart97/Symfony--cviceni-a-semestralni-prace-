@@ -1,0 +1,20 @@
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path('login') }}" method="post">
+    <label for="username">Přihlašovací jméno:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+    <label for="password">Heslo:</label>
+    <input type="password" id="password" name="_password" />
+
+    
+    <button type="submit">Přihlásit</button>
+</form>
+
+<div>
+<p> Jmeno: admin; heslo: admin - pro práva administratora </p>
+<p> Jmeno: user; heslo: user - pro práva uzivatele </p>
+
+</div>

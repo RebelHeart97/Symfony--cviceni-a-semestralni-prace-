@@ -1,0 +1,89 @@
+{% extends 'database.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Úprava hráče
+{% endblock %}
+
+{% block body %}
+
+<style>
+.row{margin-left:10%;}
+
+</style>
+
+<div id="top" class="row">
+    <div class="page-header">
+        <h2>Úprava hráče <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></h2>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="row">
+    <div class="col-md-12">
+        {% for type, flashMessages in app.session.flashbag.all() %} 
+        {% for flashMessage in flashMessages %}
+        <div class="alert alert-{{ type }}">
+            {{ flashMessage|raw }}
+        </div>
+         {% endfor %} 
+         {% endfor %} 
+    </div>
+</div>
+    
+
+    {{ form_start(edit_form) }}
+
+   {{ form_label(edit_form.jmeno, 'Jméno:') }} 
+    {{ form_widget(edit_form.jmeno) }}<br>
+    {{ form_label(edit_form.prijmeni, 'Příjmení:') }}
+    {{ form_widget(edit_form.prijmeni) }}<br>
+    {{ form_label(edit_form.datNar, 'Datum narození:') }}
+    {{ form_widget(edit_form.datNar) }}<br>
+    {{ form_label(edit_form.zemePuvodu, 'Země původu:') }}
+    {{ form_widget(edit_form.zemePuvodu) }}<br>
+    {{ form_label(edit_form.vyska, 'Výška:') }}
+    {{ form_widget(edit_form.vyska) }}<br>
+    {{ form_label(edit_form.vaha, 'Váha:') }}
+    {{ form_widget(edit_form.vaha) }}<br>
+    {{ form_label(edit_form.drzeniHole, 'Držení hole:') }}
+    {{ form_widget(edit_form.drzeniHole) }}<br>
+    {{ form_label(edit_form.pozice, 'Pozice:') }}
+    {{ form_widget(edit_form.pozice) }}<br>
+    {{ form_label(edit_form.tym, 'Tým:') }}
+    {{ form_widget(edit_form.tym) }}<br>
+    <p>
+        <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Uložit
+        </button>
+    </p>
+    {{ form_end(edit_form) }}
+
+    <hr/>
+
+    
+<div class="form-group">
+    <a class="btn btn-default" href="{{ path('hraci') }}">
+        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+        Zpět na výpis
+    </a>
+    <a class="btn btn-info" href="{{ path('hraci_new') }}">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Nový
+    </a>
+    <form action="{{ path('hraci_delete', { 'id': player.id }) }}" method="post" style="display: inline-block">
+        <input type="hidden" name="_method" value="SMAZAT" />
+        {{ form_widget(delete_form) }}
+        <button class="btn btn-danger" type="submit" onclick="return confirm('Jste si jist');">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            Smazat
+        </button>
+    </form>
+</div>
+
+</div>
+
+
+{% endblock %}
+

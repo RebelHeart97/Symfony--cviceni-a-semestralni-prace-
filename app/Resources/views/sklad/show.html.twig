@@ -1,0 +1,56 @@
+﻿<style>
+table{border:3px solid black; text-align:center;}
+th{color:green; font-size:20px; border:2px solid grey;}
+td{font-size:20px; border:2px solid grey;}
+body li{list-style-type:none}
+table{margin-bottom:2%; margin-left:2%;}
+li{margin:1%;}
+</style>
+
+{% block stylesheets %}
+	 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}" />
+         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-theme.min.css')}}" />
+         {% endblock %}
+
+
+{% block body %}
+    <h1>Sklad</h1>
+
+    <table cellspacing="0">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sklad.id }}</td>
+            </tr>
+            <tr>
+                <th>Nazev</th>
+                <td>{{ sklad.nazev }}</td>
+            </tr>
+            <tr>
+                <th>Cena</th>
+                <td>{{ sklad.cena }}</td>
+            </tr>
+            <tr>
+                <th>Dostupnost</th>
+                <td>{% if sklad.dostupnost %}Ano{% else %}Ne{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class="btn btn-primary" href="{{ path('cv8_index') }}" role="button">Zpět na výpis</a> 
+	
+
+        </li>
+        <li>
+          
+		<a class="btn btn-primary" href="{{ path('cv8_edit', { 'id': sklad.id }) }}" role="button">Upravit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Smazat">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

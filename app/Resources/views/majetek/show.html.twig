@@ -1,0 +1,73 @@
+{% extends 'PetkoparaCrudGeneratorBundle::base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Majetek
+{% endblock %}
+
+{% block body %}
+
+<div id="top" class="row">
+    <div class="page-header">
+        <h2>View majetek <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <p><strong>Id</strong></p>
+        <p>
+            {{ majetek.id }}
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <p><strong>Predmet</strong></p>
+        <p>
+            {{ majetek.predmet }}
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <p><strong>Vyrobeno</strong></p>
+        <p>
+            {{ majetek.vyrobeno }}
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <p><strong>Vlastnik</strong></p>
+        <p>
+            {{ majetek.vlastnik }}
+        </p>
+
+    </div></div>
+
+<hr/>
+
+
+<div class="form-group">
+    <a class="btn btn-default" href="{{ path('majetek') }}">
+        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+        Back to list
+    </a>
+    <a class="btn btn-primary" href="{{ path('majetek_edit', { 'id':  majetek.id }) }}">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+        Edit
+    </a>
+    <a class="btn btn-info" href="{{ path('majetek_new') }}">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        New
+    </a>
+    <form action="{{ path('majetek_delete', { 'id': majetek.id }) }}" method="post" style="display: inline-block">
+        <input type="hidden" name="_method" value="DELETE" />
+        {{ form_widget(delete_form) }}
+        <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            Delete
+        </button>
+    </form>
+</div>
+
+
+{% endblock %}
+

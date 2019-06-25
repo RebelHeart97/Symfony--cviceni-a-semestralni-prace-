@@ -1,0 +1,74 @@
+
+<h1>Zjistěte jaké počasí je právě u vás nebo jaké se na vás chystá</h1>
+{% block body %}
+ <div id="simpleform"> 
+      {{ form_start(form) }} 
+      {{ form_widget(form) }} 
+      {{ form_end(form) }} 
+   </div> 
+
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+body{font-family: 'Poppins', sans-serif; background-image: linear-gradient(to bottom right, rgba(0, 47, 75, .8), rgba(220, 66, 37, .5)),url("assets/background.jpg");}
+h1{color:white; margin-left:25%; text-decoration:underline;  text-transform:uppercase;}
+
+
+ #simpleform { 
+      width:600px; 
+      margin-left:28%;
+      margin-top:15%;
+      padding:14px; 
+   }  
+   #simpleform label { 
+      font-size:24px; 
+      float:left; 
+      width:300px; 
+      text-align:right; 
+      display:block; 
+      color:white;
+      font-weight:bold;
+   }  
+   #simpleform span { 
+      font-size:11px; 
+      color:grey; 
+      width:100px; 
+      text-align:right; 
+      display:block; 
+   }  
+   #simpleform input { 
+      border:1px solid grey; 
+      font-family:verdana; 
+      font-size:24px;
+      color:light blue; 
+      height:35px; 
+      width:250px; 
+      margin: 0 0 10px 10px; 
+   }  
+   #simpleform textarea { 
+      border:1px solid grey; 
+      font-family:verdana; 
+      font-size:24px; 
+      color:light blue; 
+      height:120px; 
+      width:250px; 
+      margin: 0 0 20px 10px; 
+   }  
+   #simpleform select { 
+      margin: 0 0 20px 10px; 
+   }  
+   #simpleform button { 
+      clear:both; 
+      margin-left:300px; 
+      background: grey; 
+      color:#FFFFFF; 
+      border:solid 1px #666666; 
+      font-size:20px; 
+   } 
+
+
+</style>
+{% endblock %}
+

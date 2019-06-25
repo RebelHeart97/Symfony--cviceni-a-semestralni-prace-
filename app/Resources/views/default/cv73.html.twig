@@ -1,0 +1,11 @@
+{% block stylesheets %}
+ <link rel="stylesheet" type="text/css" href="{{asset('css/styl.css')}}" />
+ {% endblock %}
+
+<h2 class="zelena">Ukol 7_3</h2>
+{% block body %}
+ {%  for zamestnanec in zamestnanci  %}
+{{ zamestnanec.jmeno }} <b>{{ zamestnanec.prijmeni}}</b><br>
+{% endfor %}
+
+{% endblock %}

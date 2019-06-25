@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	
+        <meta charset="UTF-8" />
+        <title>{% block title %}WT2{% endblock %}</title>
+        {% block stylesheets %}
+	 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}" />
+         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-theme.min.css')}}" />
+         {% endblock %}
+
+    </head>
+    <body>
+{% if is_granted('ROLE_ADMIN') %}
+			<h1> Vitej Admine!! </h1>
+		{%endif%}
+        <h1>Priklady na cviceni</h1>
+        {% block body %}
+		
+	{% endblock %}
+        {% block menu %}
+         
+	<a class="btn btn-success" href="{{ path("cv61") }}" role="button">CV6_1</a> 
+	<a class="btn btn-success" href="{{ path("cv62") }}" role="button">CV6_2</a>
+	<a class="btn btn-success" href="{{ path("cv63") }}" role="button">CV6_3</a>
+	<a class="btn btn-success" href="{{ path("posli") }}" role="button">CV7_1</a>
+	<a class="btn btn-success" href="{{ path("poslivpoli") }}" role="button">CV7_2</a>
+	<a class="btn btn-success" href="{{ path("poslipolevpoli") }}" role="button">CV7_3</a>
+	<a class="btn btn-success" href="{{ path("cv8_index") }}" role="button">CV8_databaze</a>
+    	<a class="btn btn-success" href="{{ path("home") }}" role="button">CV9_1</a>
+    	<a class="btn btn-success" href="{{ path("pdf") }}" role="button">CV9_2</a>
+	<a class="btn btn-success" href="{{ path("majitel") }}" role="button">CV10</a>
+
+    
+    
+    
+    <a class="btn btn-success" href="{{ path("login") }}" role="button">Seminarni_prace</a>
+            	
+
+        {% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,80 @@
+{% extends 'database.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Nový hráč
+{% endblock %}
+
+{% block body %}
+
+<style>
+.row{margin-left:10%;}
+
+</style>
+
+<div id="top" class="row">
+    <div class="page-header">
+        <h2>Nový hráč <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </h2>
+    </div>
+</div>
+    
+    
+    
+<div class="row">
+    <div class="row">
+    <div class="col-md-12">
+        {% for type, flashMessages in app.session.flashbag.all() %} 
+        {% for flashMessage in flashMessages %}
+        <div class="alert alert-{{ type }}">
+            {{ flashMessage|raw }}
+        </div>
+         {% endfor %} 
+         {% endfor %} 
+    </div>
+</div>
+    
+
+    {{ form_start(form) }}
+    {{ form_label(form.jmeno, 'Jméno:') }} 
+    {{ form_widget(form.jmeno) }}<br>
+    {{ form_label(form.prijmeni, 'Příjmení:') }}
+    {{ form_widget(form.prijmeni) }}<br>
+    {{ form_label(form.datNar, 'Datum narození:') }}
+    {{ form_widget(form.datNar) }}<br>
+    {{ form_label(form.zemePuvodu, 'Země původu:') }}
+    {{ form_widget(form.zemePuvodu) }}<br>
+    {{ form_label(form.vyska, 'Výška:') }}
+    {{ form_widget(form.vyska) }}<br>
+    {{ form_label(form.vaha, 'Váha:') }}
+    {{ form_widget(form.vaha) }}<br>
+    {{ form_label(form.drzeniHole, 'Držení hole:') }}
+    {{ form_widget(form.drzeniHole) }}<br>
+    {{ form_label(form.pozice, 'Pozice:') }}
+    {{ form_widget(form.pozice) }}<br>
+    {{ form_label(form.tym, 'Tým:') }}
+    {{ form_widget(form.tym) }}<br>
+    <p>
+        <button type="submit" name="submit" value="save" class="btn btn-primary"> 
+            Uložit <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+        </button>
+        <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info"> 
+            Uložit a přidat <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+    </p>
+
+
+    {{ form_end(form) }}
+
+    <hr/>
+
+<div class="form-group">
+    <a class="btn btn-default" href="{{ path('hraci') }}">
+        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+        Zpět na výpis
+    </a>
+</div>
+
+</div>
+
+
+{% endblock %}
+

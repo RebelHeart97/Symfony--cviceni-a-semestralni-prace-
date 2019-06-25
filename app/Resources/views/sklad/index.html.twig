@@ -1,0 +1,60 @@
+﻿<style>
+table{border:3px solid black}
+table td{border:1px solid black; width:50px; text-align:center}
+table th{border:1px solid black; text-transform:uppercase;}
+body li{list-style-type:none;}
+table{margin-bottom:2%; margin-left:2%;}
+</style>
+
+{% block stylesheets %}
+	 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}" />
+         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-theme.min.css')}}" />
+         {% endblock %}
+
+
+{% block body %}
+    <h1>Sklad výpis</h1>
+
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Název</th>
+                <th>Cena</th>
+                <th>Dostupnost</th>
+                <th>Akce</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sklad in sklads %}
+            <tr>
+                <td><a href="{{ path('cv8_show', { 'id': sklad.id }) }}">{{ sklad.id }}</a></td>
+                <td>{{ sklad.nazev }}</td>
+                <td>{{ sklad.cena }}</td>
+                <td>{% if sklad.dostupnost %}Ano{% else %}Ne{% endif %}</td>
+                <td>
+                    <ul>
+                        <li style="margin:3
+%">
+                            
+			<a class="btn btn-primary" href="{{ path('cv8_show', { 'id': sklad.id }) }}" role="button">Ukázat</a>
+
+                        </li>
+                        <li>
+                            <a class="btn btn-primary" href="{{ path('cv8_edit', { 'id': sklad.id }) }}" role="button">Upravit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+         
+		<a class="btn btn-primary" href="{{ path('cv8_new') }}" role="button">Vytvořit novou položku</a>
+
+        </li>
+    </ul>
+{% endblock %}

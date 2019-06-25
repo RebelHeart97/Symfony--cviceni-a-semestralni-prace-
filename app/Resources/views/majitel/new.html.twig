@@ -1,0 +1,58 @@
+{% extends 'PetkoparaCrudGeneratorBundle::base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Novy majitel
+{% endblock %}
+
+{% block body %}
+
+<div id="top" class="row">
+    <div class="page-header">
+        <h2>New majitel <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </h2>
+    </div>
+</div>
+    
+    
+    
+<div class="row">
+    <div class="row">
+    <div class="col-md-12">
+        {% for type, flashMessages in app.session.flashbag.all() %} 
+        {% for flashMessage in flashMessages %}
+        <div class="alert alert-{{ type }}">
+            {{ flashMessage|raw }}
+        </div>
+         {% endfor %} 
+         {% endfor %} 
+    </div>
+</div>
+    
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit" name="submit" value="save" class="btn btn-primary"> 
+            Ulozit <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+        </button>
+        <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info"> 
+            Ulozit a pridat <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+    </p>
+
+
+    {{ form_end(form) }}
+
+    <hr/>
+
+<div class="form-group">
+    <a class="btn btn-default" href="{{ path('majitel') }}">
+        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+        Back to list
+    </a>
+</div>
+
+</div>
+
+
+{% endblock %}
+

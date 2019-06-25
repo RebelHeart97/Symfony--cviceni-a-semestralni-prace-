@@ -1,0 +1,26 @@
+﻿<style>
+form{font-size:20px; color:green; font-weight:bold;}
+input{font-size:20px; margin:10px;}
+body li{list-style-type:none;}
+</style>
+
+{% block stylesheets %}
+	 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}" />
+         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-theme.min.css')}}" />
+         {% endblock %}
+
+
+{% block body %}
+    <h1>Sklad - vytvoření položky</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Vytvořit" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a class="btn btn-primary" href="{{ path('cv8_index') }}" role="button">Zpět na výpis</a>
+        </li>
+    </ul>
+{% endblock %}

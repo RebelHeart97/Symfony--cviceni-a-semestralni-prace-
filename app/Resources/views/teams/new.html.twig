@@ -1,0 +1,71 @@
+{% extends 'database.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Nový tým
+{% endblock %}
+
+{% block body %}
+
+<style>
+.row{margin-left:10%;}
+
+</style>
+
+
+<div id="top" class="row">
+    <div class="page-header">
+        <h2>Nový tým <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </h2>
+    </div>
+</div>
+    
+    
+    
+<div class="row">
+    <div class="row">
+    <div class="col-md-12">
+        {% for type, flashMessages in app.session.flashbag.all() %} 
+        {% for flashMessage in flashMessages %}
+        <div class="alert alert-{{ type }}">
+            {{ flashMessage|raw }}
+        </div>
+         {% endfor %} 
+         {% endfor %} 
+    </div>
+</div>
+    
+
+    {{ form_start(form) }}
+    {{ form_label(form.nazev, 'Název:') }} 
+    {{ form_widget(form.nazev) }}<br>
+    {{ form_label(form.liga, 'Liga:') }}
+    {{ form_widget(form.liga) }}<br>
+    {{ form_label(form.mesto, 'Město:') }}
+    {{ form_widget(form.mesto) }}<br>
+    {{ form_label(form.stat, 'Stát:') }}
+    {{ form_widget(form.stat) }}<br>
+    <p>
+        <button type="submit" name="submit" value="save" class="btn btn-primary"> 
+            Uložit <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+        </button>
+        <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info"> 
+            Uložit a přidat <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+    </p>
+
+
+    {{ form_end(form) }}
+
+    <hr/>
+
+<div class="form-group">
+    <a class="btn btn-default" href="{{ path('tymy') }}">
+        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+        Zpět na výpis
+    </a>
+</div>
+
+</div>
+
+
+{% endblock %}
+

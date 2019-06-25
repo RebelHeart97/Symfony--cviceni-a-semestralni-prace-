@@ -1,0 +1,56 @@
+{% extends 'zaklad.html.twig' %}
+
+{% block body %}
+<h1>Aktuální počasí</h1>
+<div class="banner"> 
+<h2>{{ city }}</h2>
+
+<div class="weather">
+{{ weather | upper }}
+</div>
+
+ <img src="http://openweathermap.org/img/w/{{ icon }}.png" width="75px" height="75px" alt="Ikona">
+<table cellspacing="0" cellpadding="5px">
+    <tr><td><strong>Rychlost větru</strong></td> <td>{{ wind_speed }} m/s</td></tr><br>
+    <tr><td><strong>Teplota</strong></td> <td>{{ temperature }} °C</td></tr><br>
+    <tr><td><strong>Vlhkost</strong></td> <td>{{ humidity }}%</td></tr>   <br>
+    <tr><td><strong>Východ slunce</strong></td> <td>{{ sunrise | date("H:i") }}</td></tr><br>
+    <tr><td><strong>Západ slunce</strong></td> <td>{{ sunset | date("H:i") }}</td></tr><br>
+</table> 
+
+<p>Aktualizováno: {{ act | date("d.m.Y H:i")}}</p> 
+  
+
+</div>
+<h2>Předověď počasí pro {{ city }} na 5 dní</h2>
+
+{{ weather_f | upper}}
+ <img src="http://openweathermap.org/img/w/{{ icon_f }}.png" width="75px" height="75px" alt="Ikona">
+<table cellspacing="0" cellpadding="5px">
+    <tr><td><strong>Datum</strong></td> <td>{{ date_f | date("d.m.Y") }}</td></tr><br>
+    <tr><td><strong>Rychlost větru</strong></td> <td>{{ wind_speed_f }} m/s</td></tr><br>
+    <tr><td><strong>Max. teplota</strong></td> <td>{{ temperature_f }} °C</td></tr><br>
+    <tr><td><strong>Tlak</strong></td> <td>{{ pressure_f }} hPa</td></tr><br>
+    <tr><td><strong>Vlhkost</strong></td> <td>{{ humidity_f }}%</td></tr>   <br>
+    
+</table> 
+
+
+   
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+body{color:white; font-family: 'Poppins', sans-serif; background-image: linear-gradient(to bottom right, rgba(0, 47, 75, .8), rgba(220, 66, 37, .5)),url("assets/background.jpg");}
+table{border:black 3px solid; margin-top:-6%;} 
+table td{border:black 1px solid; width:65%;} 
+.banner{width:280px; height:550px; background:rgba(0, 47, 75, .3); border:1px solid rgba(0, 47, 75, .8); margin-left:2%;}
+.banner table{position:static; width:280px; margin-top:-13%;}
+.banner img{margin-left:35%;}
+.weather{margin-left:35%; margin-top:20%;}
+img{margin-top:3%;}
+.banner h2{margin-left:5.5%; text-decoration:underline;}
+
+</style>
+{% endblock %}

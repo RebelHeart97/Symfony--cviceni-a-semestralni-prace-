@@ -1,0 +1,35 @@
+﻿<style>
+form{font-size:20px; color:green; font-weight:bold;}
+input{font-size:20px; margin:10px;}
+body li{list-style-type:none}
+table{margin-bottom:2%; margin-left:2%;}
+li{margin:1%;}
+
+</style>
+
+{% block stylesheets %}
+	 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}" />
+         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-theme.min.css')}}" />
+         {% endblock %}
+
+
+<h2>Sklad edit</h2>
+
+{% block body %}
+    <h1>Sklad edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Upravit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+             <a class="btn btn-primary" href="{{ path('cv8_index') }}" role="button">Zpět na výpis</a>        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Smazat">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

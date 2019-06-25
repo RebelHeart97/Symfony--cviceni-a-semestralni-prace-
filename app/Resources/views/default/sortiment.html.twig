@@ -1,0 +1,11 @@
+{% extends 'main.html.twig' %}
+{% block body %}
+{% for sortiment in sklad %}
+<table>
+<tr><p> Nazev: {{sortiment.nazev}} </p></tr>
+<tr><p> Cena: {{sortiment.cena}} </p></tr>
+
+<br>
+</table>                                          
+{%endfor%}
+{% endblock %}
